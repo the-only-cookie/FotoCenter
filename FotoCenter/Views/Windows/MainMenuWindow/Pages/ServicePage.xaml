@@ -1,0 +1,32 @@
+﻿<Page x:Class="FotoCenter.Views.Windows.MainMenuWindow.Pages.ServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FotoCenter.Views.Windows.MainMenuWindow.Pages"
+      xmlns:vm="clr-namespace:FotoCenter.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ServicePage">
+
+    <Page.DataContext>
+        <vm:ServiceViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Button Content="Назад"
+                Margin="10,5"
+                Grid.Column="2"
+                FontFamily="Arial"
+                FontSize="20"
+                Command="{Binding GoBackCommand}"
+                Foreground="#F5F5F5"
+                Background="#698AFF">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Page>
