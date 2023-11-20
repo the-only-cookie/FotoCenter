@@ -14,19 +14,24 @@
     </Page.DataContext>
     
     <Grid>
-        <Button Content="Назад"
-                Margin="10,5"
-                Grid.Column="2"
-                FontFamily="Arial"
-                FontSize="20"
-                Command="{Binding GoBackCommand}"
-                Foreground="#F5F5F5"
-                Background="#698AFF">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.35*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Margin="10,10,10,10">
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        </Grid>
+        
+        <Image/>
+        <TextBlock Text='Фотоцентр "CREATE"'
+                       TextWrapping="Wrap"
+                       FontFamily="Arial"
+                       Foreground="#698AFF"
+                       FontSize="26" Margin="10,10,0,20"/>
     </Grid>
 </Page>
