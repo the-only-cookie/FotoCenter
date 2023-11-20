@@ -8,30 +8,31 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Клиенты">
-    
+
     <Page.DataContext>
         <vm:ClientsViewModel/>
     </Page.DataContext>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.15*"/>
-            <RowDefinition Height="0.35*"/>
-        </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-              Margin="10,10,10,10">
-        <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.4*"/>
-                <ColumnDefinition Width="0.2*"/>
-        </Grid.ColumnDefinitions>
-        </Grid>
-        
-        <Image/>
-        <TextBlock Text='Фотоцентр "CREATE"'
-                       TextWrapping="Wrap"
-                       FontFamily="Arial"
-                       Foreground="#698AFF"
-                       FontSize="26" Margin="10,10,0,20"/>
+    <Grid>
+        <TextBlock Text='Фотоцентр "CREATE"' 
+                   TextWrapping="Wrap"
+                   FontFamily="Arial"
+                   Foreground="#698AFF"
+                   FontSize="26" Margin="10,10,515,392"/>
+        <TextBox HorizontalAlignment="Left" Height="38" Margin="10,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="552"/>
+        <Button Content="В меню" HorizontalAlignment="Left" Height="49" Margin="616,34,0,0" VerticalAlignment="Top" Width="174" Click="Button_Click"/>
+        <Button Content="Найти" HorizontalAlignment="Left" Height="49" Margin="616,108,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="50" Margin="616,195,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Обновить" HorizontalAlignment="Left" Height="50" Margin="616,250,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Height="50" Margin="616,305,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Выгрузить" HorizontalAlignment="Left" Height="50" Margin="616,360,0,0" VerticalAlignment="Top" Width="174"/>
+        <DataGrid x:Name="table" AutoGenerateColumns="False" Margin="10,168,515,40">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Firstname}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Middlename}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

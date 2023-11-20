@@ -14,19 +14,27 @@
     </Page.DataContext>
     
     <Grid>
-        <Button Content="Назад"
-                Margin="10,5"
-                Grid.Column="2"
-                FontFamily="Arial"
-                FontSize="20"
-                Command="{Binding GoBackCommand}"
-                Foreground="#F5F5F5"
-                Background="#698AFF">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <TextBlock Text='Фотоцентр "CREATE"' 
+                   TextWrapping="Wrap"
+                   FontFamily="Arial"
+                   Foreground="#698AFF"
+                   FontSize="26" Margin="10,10,515,392"/>
+        <TextBox HorizontalAlignment="Left" Height="38" Margin="10,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="552"/>
+        <Button Content="В меню" HorizontalAlignment="Left" Height="49" Margin="616,34,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Найти" HorizontalAlignment="Left" Height="49" Margin="616,108,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="50" Margin="616,195,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Обновить" HorizontalAlignment="Left" Height="50" Margin="616,250,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Height="50" Margin="616,305,0,0" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Выгрузить" HorizontalAlignment="Left" Height="50" Margin="616,360,0,0" VerticalAlignment="Top" Width="174"/>
+        <DataGrid x:Name="table" AutoGenerateColumns="False" Margin="10,168,515,40">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Firstname}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Middlename}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Опыт" Binding="{Binding Experience}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

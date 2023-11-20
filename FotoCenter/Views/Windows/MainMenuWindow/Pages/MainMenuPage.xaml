@@ -29,11 +29,11 @@
             </Grid.ColumnDefinitions>
 
             <Image/>
-            <TextBlock Text='Фотоцентр "впповпосспоспо"'
+            <TextBlock Text='Фотоцентр "CREATE"'
                        TextWrapping="Wrap"
                        FontFamily="Arial"
                        Foreground="#698AFF"
-                       FontSize="26"/>
+                       FontSize="26" />
 
             <Button Content="Выйти"
                     Margin="10,5"
