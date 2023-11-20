@@ -13,23 +13,58 @@
         <vm:OrdersViewModel/>
     </Page.DataContext>
 
-    <Grid>
-        <TextBlock Text='Фотоцентр "CREATE"' 
+    <Grid Margin="10,0,0,0">
+
+        <StackPanel HorizontalAlignment="Left"  Width="505" Margin="0,0,0,382" Grid.RowSpan="2" >
+            <TextBlock Text='Фотоцентр "CREATE"' 
                    TextWrapping="Wrap"
                    FontFamily="Arial"
                    Foreground="#698AFF"
-                   FontSize="26" Margin="10,10,515,392"/>
-        <TextBox HorizontalAlignment="Left" Height="38" Margin="10,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="552"/>
-        <Button Content="В меню" HorizontalAlignment="Left" Height="49" Margin="616,34,0,0" VerticalAlignment="Top" Width="174"/>
-        <Button Content="Найти" HorizontalAlignment="Left" Height="49" Margin="616,108,0,0" VerticalAlignment="Top" Width="174"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Height="50" Margin="616,195,0,0" VerticalAlignment="Top" Width="174"/>
-        <Button Content="Обновить" HorizontalAlignment="Left" Height="50" Margin="616,250,0,0" VerticalAlignment="Top" Width="174"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Height="50" Margin="616,305,0,0" VerticalAlignment="Top" Width="174"/>
-        <Button Content="Выгрузить" HorizontalAlignment="Left" Height="50" Margin="616,360,0,0" VerticalAlignment="Top" Width="174"/>
-        <DataGrid x:Name="table" AutoGenerateColumns="False" Margin="10,168,515,40">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Дата предоставления услуги" Binding="{Binding DateOfServices}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                   FontSize="26" Width="503" Height="66"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left" Margin="0,68,0,0"  Width="505" >
+            <TextBox HorizontalAlignment="Left" Height="38" Margin="50,50,0,0" TextWrapping="Wrap" Width="400" RenderTransformOrigin="0.493,-0.039"/>
+            <DataGrid x:Name="table" AutoGenerateColumns="False" Width="400"  Margin="0,10,0,0" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Клиент" Binding="{Binding Client}"/>
+                    <DataGridTextColumn Header="Сотрудник" Binding="{Binding Employee}"/>
+                    <DataGridTextColumn Header="Услуга" Binding="{Binding Service}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="450" Margin="510,0,0,0" VerticalAlignment="Top" Width="227" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Button Content="В меню" 
+                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
+                    FontSize="24"
+                    Foreground="#F5F5F5"
+                    Background="#698AFF"/>
+            <Button Content="Найти" 
+                    HorizontalAlignment="Left" Height="50" Margin="15,50,0,0" Width="200" 
+                    FontSize="24"
+                    Foreground="#F5F5F5"
+                    Background="#698AFF"/>
+            <Button Content="Добавить" 
+                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
+                    FontSize="24"
+                    Foreground="#F5F5F5"
+                    Background="#698AFF"/>
+            <Button Content="Обновить" 
+                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
+                    FontSize="24"
+                    Foreground="#F5F5F5"
+                    Background="#698AFF"/>
+            <Button Content="Удалить" 
+                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200" 
+                    FontSize="24"
+                    Foreground="#F5F5F5"
+                    Background="#698AFF"/>
+            <Button Content="Выгрузить" 
+                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
+                    FontSize="24"
+                    Foreground="#F5F5F5"
+                    Background="#698AFF"/>
+        </StackPanel>
     </Grid>
 </Page>
