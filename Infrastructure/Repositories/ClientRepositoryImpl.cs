@@ -10,6 +10,7 @@ namespace Infrastructure.Repositories
         public ClientRepositoryImpl(AppContext context)
             : base(context)
         {
+
         }
     }
 }

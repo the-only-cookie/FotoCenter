@@ -9,6 +9,7 @@ namespace Infrastructure.Repositories
         public CategoryRepositoryImpl(AppContext context)
             : base(context)
         { 
+
         }
     }
 }
