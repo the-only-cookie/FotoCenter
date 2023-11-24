@@ -11,6 +11,6 @@ namespace FotoCenter.Views.Windows.MainMenuWindow.Pages
         public MainMenuPage()
         {
             InitializeComponent();
-        }
+        }   
     }
 }

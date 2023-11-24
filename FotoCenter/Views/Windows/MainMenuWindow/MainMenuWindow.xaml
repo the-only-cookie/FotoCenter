@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FotoCenter.Views.Windows.MainMenuWindow"
         xmlns:vm="clr-namespace:FotoCenter.ViewModels"
         mc:Ignorable="d"
-        Title="Главное меню" MinHeight="650" MinWidth="750"
+       Title = "{Binding Title}" MinHeight="650" MinWidth="750"
         Closed="Window_Closed"
         WindowStartupLocation="CenterScreen">
 
