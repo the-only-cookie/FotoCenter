@@ -86,7 +86,7 @@
                     Command="{Binding GoToClientsCommand}"
                     FontSize="24"
                     Foreground="#F5F5F5"
-                    Background="#698AFF">
+                    Background="#698AFF" >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
