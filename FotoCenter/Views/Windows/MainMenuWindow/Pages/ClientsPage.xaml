@@ -34,7 +34,6 @@
                     <DataGridTextColumn Header="Отчество" Binding="{Binding Lastname}"/>
                     <DataGridTextColumn Header="Адрес" Binding="{Binding Adres}"/>
                     <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
-                    
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -45,18 +44,13 @@
                     FontSize="24"
                     Command="{Binding GoBackCommand}"
                     Foreground="#F5F5F5"
-                    Background="#698AFF" Click="Button_Click_1"/>
+                    Background="#698AFF" />
             <Button Content="Найти" 
                     HorizontalAlignment="Left" Height="50" Margin="15,50,0,0" Width="200" 
                     FontSize="24"
                     Foreground="#F5F5F5"
                     Background="#698AFF"/>
             <Button Content="Добавить" 
-                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
-                    FontSize="24"
-                    Foreground="#F5F5F5"
-                    Background="#698AFF"/>
-            <Button Content="Обновить" 
                     HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
                     FontSize="24"
                     Foreground="#F5F5F5"

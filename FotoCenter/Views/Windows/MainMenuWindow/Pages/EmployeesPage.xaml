@@ -54,11 +54,7 @@
                     FontSize="24"
                     Foreground="#F5F5F5"
                     Background="#698AFF"/>
-            <Button Content="Обновить" 
-                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
-                    FontSize="24"
-                    Foreground="#F5F5F5"
-                    Background="#698AFF"/>
+           
             <Button Content="Удалить" 
                     HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200" 
                     FontSize="24"

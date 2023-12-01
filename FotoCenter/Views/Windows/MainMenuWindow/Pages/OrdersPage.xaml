@@ -41,31 +41,30 @@
                     Command="{Binding GoBackCommand}"
                     Foreground="#F5F5F5"
                     Background="#698AFF"/>
+            
             <Button Content="Найти" 
                     HorizontalAlignment="Left" Height="50" Margin="15,50,0,0" Width="200" 
                     FontSize="24"
                     Foreground="#F5F5F5"
-                    Background="#698AFF"/>
+                    Background="#698AFF" Click="Button_Click"/>
+            
             <Button Content="Добавить" 
                     HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
                     FontSize="24"
                     Foreground="#F5F5F5"
-                    Background="#698AFF"/>
-            <Button Content="Обновить" 
-                    HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
-                    FontSize="24"
-                    Foreground="#F5F5F5"
-                    Background="#698AFF"/>
+                    Background="#698AFF" Click="Button_Click_1"/>
+
             <Button Content="Удалить" 
                     HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200" 
                     FontSize="24"
                     Foreground="#F5F5F5"
-                    Background="#698AFF"/>
+                    Background="#698AFF" Click="Button_Click_2"/>
+            
             <Button Content="Выгрузить" 
                     HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200"  
                     FontSize="24"
                     Foreground="#F5F5F5"
-                    Background="#698AFF"/>
+                    Background="#698AFF" Click="Button_Click_3"/>
         </StackPanel>
     </Grid>
 </Page>

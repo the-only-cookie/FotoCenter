@@ -5,6 +5,7 @@ using Domain.Types;
 using System.Windows.Input;
 using Infrastructure.Repositories;
 using Domain.Models;
+using System.Collections.ObjectModel;
 
 namespace FotoCenter.ViewModels
 {
@@ -17,6 +18,10 @@ namespace FotoCenter.ViewModels
             GoBackCommand = new RelayCommand(OnGoBackCommandExecuted, CanGoBackCommandExecute);
             _repository = new ClientRepositoryImpl(new AppContext());
         }
+
+        public Client SelectedItem { get; set; }
+        
+        public ObservableCollection<Client> Clients { get; set; }
 
         public ICommand GoBackCommand { get; set; }
         
