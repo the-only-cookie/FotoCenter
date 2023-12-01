@@ -6,6 +6,7 @@ using System;
 using System.Windows.Controls;
 using System.Runtime.CompilerServices;
 using System.Reflection;
+using Infrastructure.Repositories;
 
 namespace FotoCenter.ViewModels
 {
