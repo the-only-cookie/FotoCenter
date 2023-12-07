@@ -37,8 +37,8 @@
                       ItemsSource="{Binding Employees, UpdateSourceTrigger=PropertyChanged}" 
                       Width="400">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Firstname}" Width="*"/>
-                    <DataGridTextColumn Header="Имя" Binding="{Binding Middlename}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Lastname}" Width="*"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Firstname}" Width="*"/>
                     <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" Width="*"/>
                     <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" Width="*"/>
                     <DataGridTextColumn Header="Опыт" Binding="{Binding Experience}" Width="*"/>
