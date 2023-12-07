@@ -11,7 +11,7 @@
 
 
 
-<Page.DataContext>
+    <Page.DataContext>
         <vm:ClientsViewModel/>
     </Page.DataContext>
 
@@ -26,14 +26,24 @@
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Left" Margin="0,68,0,0"  Width="505" >
-            <TextBox HorizontalAlignment="Left" Height="38" Margin="50,50,0,0" TextWrapping="Wrap" Width="400" RenderTransformOrigin="0.493,-0.039"/>
-            <DataGrid x:Name="table" AutoGenerateColumns="False" Width="400"  Margin="0,10,0,0" >
+            <TextBox HorizontalAlignment="Left" Height="38" Margin="50,50,0,0" TextWrapping="Wrap" Width="400" RenderTransformOrigin="0.493,-0.039"
+                     Text="{Binding SelectedClient, UpdateSourceTrigger=PropertyChanged}"/>
+            <DataGrid Margin="0,10,0,0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeRows="False"
+                      HeadersVisibility="Column"
+                      Height="100"
+                      Width="400"
+                      SelectedItem="{Binding SelectedClient}"
+                      ItemsSource="{Binding Clients, UpdateSourceTrigger=PropertyChanged}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Firstname}"/>
-                    <DataGridTextColumn Header="Имя" Binding="{Binding Middlename}"/>
-                    <DataGridTextColumn Header="Отчество" Binding="{Binding Lastname}"/>
-                    <DataGridTextColumn Header="Адрес" Binding="{Binding Adres}"/>
-                    <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Lastname}" Width="*"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Firstname}" Width="*"/>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding Middlename}" Width="*"/>
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding Adres}" Width="*"/>
+                    <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -48,6 +58,7 @@
             <Button Content="Найти" 
                     HorizontalAlignment="Left" Height="50" Margin="15,50,0,0" Width="200" 
                     FontSize="24"
+                    Command="{Binding Haiti}"
                     Foreground="#F5F5F5"
                     Background="#698AFF"/>
             <Button Content="Добавить" 
@@ -58,6 +69,7 @@
             <Button Content="Удалить" 
                     HorizontalAlignment="Left" Height="50" Margin="15,10,0,0" Width="200" 
                     FontSize="24"
+                    Command="{Binding DeleteCommand}"
                     Foreground="#F5F5F5"
                     Background="#698AFF"/>
             <Button Content="Выгрузить" 
