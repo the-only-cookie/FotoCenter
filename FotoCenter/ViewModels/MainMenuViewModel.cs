@@ -19,7 +19,7 @@ namespace FotoCenter.ViewModels
         private static EmployeesPage _employeesPage;
         private static ServicePage _servicePage;
         private static MainMenuPage _mainMenuPage;
-        private static OrdersPage _ordersPage;
+        private static ProvisionOfServicesPage _provisionOfServicesPage;
       
 
  
@@ -72,11 +72,11 @@ public MainMenuViewModel()
                     Title = "Услуги";
                     SelectedPage = _servicePage;
                     break;
-                case MainMenuPages.OrdersPage:
-                    if (_ordersPage == null)
-                        _ordersPage = new OrdersPage();
+                case MainMenuPages.ProvisionOfServicesPage:
+                    if (_provisionOfServicesPage == null)
+                        _provisionOfServicesPage = new ProvisionOfServicesPage();
                     Title = "Заказы";
-                    SelectedPage = _ordersPage;
+                    SelectedPage = _provisionOfServicesPage;
                     break;
             }
         }

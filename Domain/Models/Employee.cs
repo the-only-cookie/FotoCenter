@@ -22,7 +22,7 @@ namespace Domain.Models
         public long Experience { get; set; }
         public int PostId { get; set; }
         public int FotocenterId { get; set; }
-    
+
         public virtual User User { get; set; }
         public virtual ICollection<ProvisionOfServices> ProvisionOfServices { get; set; }
         public virtual Fotocenter Fotocenter { get; set; }

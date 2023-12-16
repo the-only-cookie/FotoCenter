@@ -6,6 +6,8 @@ using Infrastructure.Repositories;
 using System.Windows.Input;
 using Domain.Models;
 using System.Collections.ObjectModel;
+using FotoCenter.Views.Windows.CreateClientWindow;
+using FotoCenter.Views.Windows.CreateEmployeeWindow;
 
 namespace FotoCenter.ViewModels
 {
@@ -22,6 +24,7 @@ namespace FotoCenter.ViewModels
             _repository = new EmployeeRepositoryImpl(new AppContext());
             Haiti = new RelayCommand(OnHaitiExecute, HaititExecute);
             DeleteCommand = new RelayCommand(OnDeleteCommandExecuted, CanDeleteCommandExecute);
+            OpenCreateEmployeeWindowCommand = new RelayCommand(OnOpenCreateEmployeeWindowCommandExecuted, CanOpenCreateEmployeeWindowCommandExecute);
             LoadData();
         }
         public Employee SelectedItem { get; set; }
@@ -93,6 +96,18 @@ namespace FotoCenter.ViewModels
             _repository.RemoveItem(SelectedEmployee);
             await _repository.SaveAsync();
             Employees.Remove(SelectedEmployee);
+        }
+        public ICommand OpenCreateEmployeeWindowCommand { get; private set; }
+
+        private bool CanOpenCreateEmployeeWindowCommandExecute(object parameter)
+        {
+            return true;
+        }
+
+        private void OnOpenCreateEmployeeWindowCommandExecuted(object parameter)
+        {
+            CreateEmployeeWindow createEmployeeWindow = new CreateEmployeeWindow();
+            createEmployeeWindow.ShowDialog();
         }
     }
 }

@@ -5,10 +5,11 @@ namespace Domain.Models
 {
     public partial class User : BaseModel
     {
+        public override int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public int RoleId { get; set; }
-
+        
         [ForeignKey("ClientId")]
         public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }

@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace FotoCenter {
+namespace Domain {
     
     
     /// <summary>
@@ -44,13 +44,13 @@ namespace FotoCenter {
         
         private UsersDataTable tableUsers;
         
-        private global::System.Data.DataRelation _relationFK_dbo_Clients_dbo_Users_Id;
+        private global::System.Data.DataRelation relationFK_Clients_Users;
         
         private global::System.Data.DataRelation _relationFK_dbo_Employees_dbo_Fotocenters_FotocenterId;
         
         private global::System.Data.DataRelation _relationFK_dbo_Employees_dbo_Posts_PostId;
         
-        private global::System.Data.DataRelation _relationFK_dbo_Employees_dbo_Users_Id;
+        private global::System.Data.DataRelation relationFK_Employees_Users;
         
         private global::System.Data.DataRelation _relationFK_dbo_ProvisionOfServices_dbo_Clients_ClientId;
         
@@ -428,10 +428,10 @@ namespace FotoCenter {
                     this.tableUsers.InitVars();
                 }
             }
-            this._relationFK_dbo_Clients_dbo_Users_Id = this.Relations["FK_dbo.Clients_dbo.Users_Id"];
+            this.relationFK_Clients_Users = this.Relations["FK_Clients_Users"];
             this._relationFK_dbo_Employees_dbo_Fotocenters_FotocenterId = this.Relations["FK_dbo.Employees_dbo.Fotocenters_FotocenterId"];
             this._relationFK_dbo_Employees_dbo_Posts_PostId = this.Relations["FK_dbo.Employees_dbo.Posts_PostId"];
-            this._relationFK_dbo_Employees_dbo_Users_Id = this.Relations["FK_dbo.Employees_dbo.Users_Id"];
+            this.relationFK_Employees_Users = this.Relations["FK_Employees_Users"];
             this._relationFK_dbo_ProvisionOfServices_dbo_Clients_ClientId = this.Relations["FK_dbo.ProvisionOfServices_dbo.Clients_ClientId"];
             this._relationFK_dbo_ProvisionOfServices_dbo_Employees_EmployeeId = this.Relations["FK_dbo.ProvisionOfServices_dbo.Employees_EmployeeId"];
             this._relationFK_dbo_ProvisionOfServices_dbo_Services_ServiceId = this.Relations["FK_dbo.ProvisionOfServices_dbo.Services_ServiceId"];
@@ -467,10 +467,10 @@ namespace FotoCenter {
             base.Tables.Add(this.tableServices);
             this.tableUsers = new UsersDataTable();
             base.Tables.Add(this.tableUsers);
-            this._relationFK_dbo_Clients_dbo_Users_Id = new global::System.Data.DataRelation("FK_dbo.Clients_dbo.Users_Id", new global::System.Data.DataColumn[] {
+            this.relationFK_Clients_Users = new global::System.Data.DataRelation("FK_Clients_Users", new global::System.Data.DataColumn[] {
                         this.tableUsers.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableClients.IdColumn}, false);
-            this.Relations.Add(this._relationFK_dbo_Clients_dbo_Users_Id);
+            this.Relations.Add(this.relationFK_Clients_Users);
             this._relationFK_dbo_Employees_dbo_Fotocenters_FotocenterId = new global::System.Data.DataRelation("FK_dbo.Employees_dbo.Fotocenters_FotocenterId", new global::System.Data.DataColumn[] {
                         this.tableFotocenters.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableEmployees.FotocenterIdColumn}, false);
@@ -479,10 +479,10 @@ namespace FotoCenter {
                         this.tablePosts.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableEmployees.PostIdColumn}, false);
             this.Relations.Add(this._relationFK_dbo_Employees_dbo_Posts_PostId);
-            this._relationFK_dbo_Employees_dbo_Users_Id = new global::System.Data.DataRelation("FK_dbo.Employees_dbo.Users_Id", new global::System.Data.DataColumn[] {
+            this.relationFK_Employees_Users = new global::System.Data.DataRelation("FK_Employees_Users", new global::System.Data.DataColumn[] {
                         this.tableUsers.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableEmployees.IdColumn}, false);
-            this.Relations.Add(this._relationFK_dbo_Employees_dbo_Users_Id);
+            this.Relations.Add(this.relationFK_Employees_Users);
             this._relationFK_dbo_ProvisionOfServices_dbo_Clients_ClientId = new global::System.Data.DataRelation("FK_dbo.ProvisionOfServices_dbo.Clients_ClientId", new global::System.Data.DataColumn[] {
                         this.tableClients.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableProvisionOfServices.ClientIdColumn}, false);
@@ -1372,7 +1372,7 @@ namespace FotoCenter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ClientsRow AddClientsRow(UsersRow _parentUsersRowByFK_dbo_Clients_dbo_Users_Id, string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber) {
+            public ClientsRow AddClientsRow(string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber) {
                 ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1381,9 +1381,6 @@ namespace FotoCenter {
                         Middlename,
                         Adres,
                         PhoneNumber};
-                if ((_parentUsersRowByFK_dbo_Clients_dbo_Users_Id != null)) {
-                    columnValuesArray[0] = _parentUsersRowByFK_dbo_Clients_dbo_Users_Id[0];
-                }
                 rowClientsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClientsRow);
                 return rowClientsRow;
@@ -1438,7 +1435,11 @@ namespace FotoCenter {
                 base.Columns.Add(this.columnPhoneNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnFirstname.AllowDBNull = false;
                 this.columnFirstname.MaxLength = 2147483647;
@@ -1743,7 +1744,7 @@ namespace FotoCenter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmployeesRow AddEmployeesRow(UsersRow _parentUsersRowByFK_dbo_Employees_dbo_Users_Id, string Firstname, string Lastname, string Middlename, string DateOfBirth, string Gender, long Experience, PostsRow _parentPostsRowByFK_dbo_Employees_dbo_Posts_PostId, FotocentersRow _parentFotocentersRowByFK_dbo_Employees_dbo_Fotocenters_FotocenterId) {
+            public EmployeesRow AddEmployeesRow(UsersRow parentUsersRowByFK_Employees_Users, string Firstname, string Lastname, string Middlename, string DateOfBirth, string Gender, long Experience, PostsRow _parentPostsRowByFK_dbo_Employees_dbo_Posts_PostId, FotocentersRow _parentFotocentersRowByFK_dbo_Employees_dbo_Fotocenters_FotocenterId) {
                 EmployeesRow rowEmployeesRow = ((EmployeesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1755,8 +1756,8 @@ namespace FotoCenter {
                         Experience,
                         null,
                         null};
-                if ((_parentUsersRowByFK_dbo_Employees_dbo_Users_Id != null)) {
-                    columnValuesArray[0] = _parentUsersRowByFK_dbo_Employees_dbo_Users_Id[0];
+                if ((parentUsersRowByFK_Employees_Users != null)) {
+                    columnValuesArray[0] = parentUsersRowByFK_Employees_Users[0];
                 }
                 if ((_parentPostsRowByFK_dbo_Employees_dbo_Posts_PostId != null)) {
                     columnValuesArray[7] = _parentPostsRowByFK_dbo_Employees_dbo_Posts_PostId[0];
@@ -3705,7 +3706,9 @@ namespace FotoCenter {
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
+                this.columnLogin.AllowDBNull = false;
                 this.columnLogin.MaxLength = 2147483647;
+                this.columnPassword.AllowDBNull = false;
                 this.columnPassword.MaxLength = 2147483647;
                 this.columnRoleId.AllowDBNull = false;
             }
@@ -4025,10 +4028,10 @@ namespace FotoCenter {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public UsersRow UsersRow {
                 get {
-                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.Clients_dbo.Users_Id"])));
+                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Clients_Users"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_dbo.Clients_dbo.Users_Id"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Clients_Users"]);
                 }
             }
             
@@ -4183,10 +4186,10 @@ namespace FotoCenter {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public UsersRow UsersRow {
                 get {
-                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_dbo.Employees_dbo.Users_Id"])));
+                    return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_Employees_Users"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_dbo.Employees_dbo.Users_Id"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Employees_Users"]);
                 }
             }
             
@@ -4614,12 +4617,7 @@ namespace FotoCenter {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Login {
                 get {
-                    try {
-                        return ((string)(this[this.tableUsers.LoginColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Login\' в таблице \'Users\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableUsers.LoginColumn]));
                 }
                 set {
                     this[this.tableUsers.LoginColumn] = value;
@@ -4630,12 +4628,7 @@ namespace FotoCenter {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Password {
                 get {
-                    try {
-                        return ((string)(this[this.tableUsers.PasswordColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Password\' в таблице \'Users\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableUsers.PasswordColumn]));
                 }
                 set {
                     this[this.tableUsers.PasswordColumn] = value;
@@ -4666,47 +4659,23 @@ namespace FotoCenter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsLoginNull() {
-                return this.IsNull(this.tableUsers.LoginColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetLoginNull() {
-                this[this.tableUsers.LoginColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPasswordNull() {
-                return this.IsNull(this.tableUsers.PasswordColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPasswordNull() {
-                this[this.tableUsers.PasswordColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ClientsRow[] GetClientsRows() {
-                if ((this.Table.ChildRelations["FK_dbo.Clients_dbo.Users_Id"] == null)) {
+                if ((this.Table.ChildRelations["FK_Clients_Users"] == null)) {
                     return new ClientsRow[0];
                 }
                 else {
-                    return ((ClientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Clients_dbo.Users_Id"])));
+                    return ((ClientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Clients_Users"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public EmployeesRow[] GetEmployeesRows() {
-                if ((this.Table.ChildRelations["FK_dbo.Employees_dbo.Users_Id"] == null)) {
+                if ((this.Table.ChildRelations["FK_Employees_Users"] == null)) {
                     return new EmployeesRow[0];
                 }
                 else {
-                    return ((EmployeesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_dbo.Employees_dbo.Users_Id"])));
+                    return ((EmployeesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Employees_Users"])));
                 }
             }
         }
@@ -5052,7 +5021,7 @@ namespace FotoCenter {
         }
     }
 }
-namespace FotoCenter._Domain_Models_AppContextDataSetTableAdapters {
+namespace Domain._Domain_Models_AppContextDataSetTableAdapters {
     
     
     /// <summary>
@@ -5217,7 +5186,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5589,7 +5558,7 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5877,10 +5846,9 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Clients] ([Id], [Firstname], [Lastname], [Middlename], [Adres], [PhoneNumber]) VALUES (@Id, @Firstname, @Lastname, @Middlename, @Adres, @PhoneNumber);
-SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Clients] ([Firstname], [Lastname], [Middlename], [Adres], [PhoneNumber]) VALUES (@Firstname, @Lastname, @Middlename, @Adres, @PhoneNumber);
+SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Firstname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lastname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lastname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Middlename", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Middlename", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5888,23 +5856,23 @@ SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHER
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Clients] SET [Id] = @Id, [Firstname] = @Firstname, [Lastname] = @Lastname, [Middlename] = @Middlename, [Adres] = @Adres, [PhoneNumber] = @PhoneNumber WHERE (([Id] = @Original_Id));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Clients] SET [Firstname] = @Firstname, [Lastname] = @Lastname, [Middlename] = @Middlename, [Adres] = @Adres, [PhoneNumber] = @PhoneNumber WHERE (([Id] = @Original_Id));
 SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Firstname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lastname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lastname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Middlename", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Middlename", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Adres", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Adres", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PhoneNumber", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PhoneNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5996,37 +5964,36 @@ SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber) {
             if ((Firstname == null)) {
                 throw new global::System.ArgumentNullException("Firstname");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Firstname));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Firstname));
             }
             if ((Lastname == null)) {
                 throw new global::System.ArgumentNullException("Lastname");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Lastname));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Lastname));
             }
             if ((Middlename == null)) {
                 throw new global::System.ArgumentNullException("Middlename");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Middlename));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Middlename));
             }
             if ((Adres == null)) {
                 throw new global::System.ArgumentNullException("Adres");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Adres));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Adres));
             }
             if ((PhoneNumber == null)) {
                 throw new global::System.ArgumentNullException("PhoneNumber");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(PhoneNumber));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(PhoneNumber));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6048,39 +6015,39 @@ SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber, int Original_Id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Update(string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber, int Original_Id, int Id) {
             if ((Firstname == null)) {
                 throw new global::System.ArgumentNullException("Firstname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Firstname));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Firstname));
             }
             if ((Lastname == null)) {
                 throw new global::System.ArgumentNullException("Lastname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Lastname));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Lastname));
             }
             if ((Middlename == null)) {
                 throw new global::System.ArgumentNullException("Middlename");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Middlename));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Middlename));
             }
             if ((Adres == null)) {
                 throw new global::System.ArgumentNullException("Adres");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Adres));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Adres));
             }
             if ((PhoneNumber == null)) {
                 throw new global::System.ArgumentNullException("PhoneNumber");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(PhoneNumber));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(PhoneNumber));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6102,7 +6069,7 @@ SELECT Id, Firstname, Lastname, Middlename, Adres, PhoneNumber FROM Clients WHER
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Firstname, string Lastname, string Middlename, string Adres, string PhoneNumber, int Original_Id) {
-            return this.Update(Original_Id, Firstname, Lastname, Middlename, Adres, PhoneNumber, Original_Id);
+            return this.Update(Firstname, Lastname, Middlename, Adres, PhoneNumber, Original_Id, Original_Id);
         }
     }
     
@@ -6285,7 +6252,7 @@ SELECT Id, Firstname, Lastname, Middlename, DateOfBirth, Gender, Experience, Pos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6660,7 +6627,7 @@ SELECT Id, Firstname, Lastname, Middlename, DateOfBirth, Gender, Experience, Pos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7009,7 +6976,7 @@ SELECT Id, Firstname, Lastname, Middlename, DateOfBirth, Gender, Experience, Pos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7344,7 +7311,7 @@ SELECT Id, DateOfProvisionOfServices, EmployeeId, ClientId, ServiceId FROM Provi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7659,7 +7626,7 @@ SELECT Id, DateOfProvisionOfServices, EmployeeId, ClientId, ServiceId FROM Provi
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7973,7 +7940,7 @@ SELECT Id, Title, Cost, CategoryId FROM Services WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8294,7 +8261,7 @@ SELECT Id, Title, Cost, CategoryId FROM Services WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::FotoCenter.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
+            this._connection.ConnectionString = global::Domain.Properties.Settings.Default.Domain_Models_AppContextConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8389,13 +8356,13 @@ SELECT Id, Title, Cost, CategoryId FROM Services WHERE (Id = @Id)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(string Login, string Password, int RoleId) {
             if ((Login == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Login");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Login));
             }
             if ((Password == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Password");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Password));
@@ -8423,13 +8390,13 @@ SELECT Id, Title, Cost, CategoryId FROM Services WHERE (Id = @Id)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Login, string Password, int RoleId, int Original_Id, int Original_RoleId, int Id) {
             if ((Login == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Login");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Login));
             }
             if ((Password == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Password");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Password));

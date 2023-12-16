@@ -1,6 +1,9 @@
-﻿namespace Domain.Repositories
+﻿using Domain.Models;
+using Domain.Repositories.Base;
+
+namespace Domain.Repositories
 {
-    public interface IServiceRepository
+    public interface IServiceRepository:IBaseRepository<Service>
     {
     }
 }

@@ -6,6 +6,6 @@
         ClientsPage,
         EmployeesPage,
         ServicesPage,
-        OrdersPage
+        ProvisionOfServicesPage
     }
 }

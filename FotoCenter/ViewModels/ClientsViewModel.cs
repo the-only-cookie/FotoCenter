@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Infrastructure.Repositories;
 using Domain.Models;
 using System.Collections.ObjectModel;
+using FotoCenter.Views.Windows.CreateClientWindow;
 
 namespace FotoCenter.ViewModels
 {
@@ -14,14 +15,14 @@ namespace FotoCenter.ViewModels
         private readonly IClientRepository _repository;
         private string _searchLastname;
         public ObservableCollection<Client> _clients;
-        private Client _selectedClient;
-        private Client _newClient;
+        private Client _selectedClient;    
         public ClientsViewModel()
         {
             GoBackCommand = new RelayCommand(OnGoBackCommandExecuted, CanGoBackCommandExecute);
             _repository = new ClientRepositoryImpl(new AppContext());
             Haiti = new RelayCommand(OnHaitiExecute, HaititExecute);
             DeleteCommand = new RelayCommand(OnDeleteCommandExecuted, CanDeleteCommandExecute);
+            OpenCreateClientWindowCommand = new RelayCommand(OnOpenCreateClientWindowCommandExecuted, CanOpenCreateClientWindowCommandExecute);
             LoadData();
         }
         
@@ -94,5 +95,20 @@ namespace FotoCenter.ViewModels
             await _repository.SaveAsync();
             Clients.Remove(SelectedClient);
         }
+
+        public ICommand OpenCreateClientWindowCommand { get; private set; }
+ 
+        private bool CanOpenCreateClientWindowCommandExecute(object parameter)
+        {
+            return true;
+        }
+
+        private void OnOpenCreateClientWindowCommandExecuted(object parameter)
+        {
+            CreateClientWindow createClientWindow = new CreateClientWindow();
+            createClientWindow.ShowDialog();
+        }
+
+
     }
 }

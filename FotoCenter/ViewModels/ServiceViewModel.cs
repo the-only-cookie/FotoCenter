@@ -7,10 +7,13 @@ using System.Windows.Input;
 using Domain.Models;
 using System.Collections.ObjectModel;
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using FotoCenter.Views.Windows.CreateProvisionOfServicesWindow;
+using FotoCenter.Views.Windows.CreateServiceWindow;
 
 namespace FotoCenter.ViewModels
 
 {
+    
     public class ServiceViewModel : NotifyPropertyChangedObject
     {
         private readonly ServiceRepositoryImpl _repository;
@@ -19,14 +22,17 @@ namespace FotoCenter.ViewModels
         private Service _selectedService;
         public ServiceViewModel() 
         {
+            User = MainViewModel.CurrentUser;
             GoBackCommand = new RelayCommand(OnGoBackCommandExecuted, CanGoBackCommandExecute);
             _repository = new ServiceRepositoryImpl(new AppContext());
             Haiti = new RelayCommand(OnHaitiExecute, HaititExecute);
             DeleteCommand = new RelayCommand(OnDeleteCommandExecuted, CanDeleteCommandExecute);
+            OpenCreateServiceWindowCommand = new RelayCommand(OnOpenCreateServiceWindowCommandExecuted, CanOpenCreateServiceWindowCommandExecute);
             LoadData();
         }
         public Service SelectedItem { get; set; }
 
+        public User User { get; set; }
         public Service SelectedService
         {
             get { return _selectedService; }
@@ -93,6 +99,18 @@ namespace FotoCenter.ViewModels
             _repository.RemoveItem(SelectedService);
             await _repository.SaveAsync();
             Services.Remove(SelectedService);
+        }
+        public ICommand OpenCreateServiceWindowCommand { get; private set; }
+
+        private bool CanOpenCreateServiceWindowCommandExecute(object parameter)
+        {
+            return true;
+        }
+
+        private void OnOpenCreateServiceWindowCommandExecuted(object parameter)
+        {
+            CreateServiceWindow createServiceWindow = new CreateServiceWindow();
+            createServiceWindow.ShowDialog();
         }
     }
 }

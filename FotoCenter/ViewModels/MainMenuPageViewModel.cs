@@ -15,7 +15,7 @@ namespace FotoCenter.ViewModels
             GoToClientsCommand = new RelayCommand(OnGoToClientsCommandExecuted, CanGoToClientsCommandExecute);
             GoToEmployeesCommand = new RelayCommand(OnGoToEmployeesCommandExecuted, CanGoToEmployeesCommandExecute);
             GoToServiceCommand = new RelayCommand(OnGoToServiceCommandExecuted, CanGoToServiceCommandExecute);
-            GoToOrdersCommand = new RelayCommand(OnGoToOrdersCommandExecuted, CanGoToOrdersCommandExecute);
+            GoToProvisionOfServicesCommand = new RelayCommand(OnGoToProvisionOfServicesCommandExecuted, CanGoToProvisionOfServicesCommandExecute);
         }
 
         public User User { get; set; }
@@ -70,16 +70,16 @@ namespace FotoCenter.ViewModels
             MainMenuViewModel.SwitchPage(MainMenuPages.ServicesPage);
         }
 
-        public ICommand GoToOrdersCommand { get; private set; }
+        public ICommand GoToProvisionOfServicesCommand { get; private set; }
 
-        private bool CanGoToOrdersCommandExecute(object parameter)
+        private bool CanGoToProvisionOfServicesCommandExecute(object parameter)
         {
             return true;
         }
 
-        private void OnGoToOrdersCommandExecuted(object parameter)
+        private void OnGoToProvisionOfServicesCommandExecuted(object parameter)
         {
-            MainMenuViewModel.SwitchPage(MainMenuPages.OrdersPage);
+            MainMenuViewModel.SwitchPage(MainMenuPages.ProvisionOfServicesPage);
         }
 
         #endregion

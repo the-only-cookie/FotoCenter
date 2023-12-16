@@ -60,17 +60,22 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppContext.cs" />
     <Compile Include="Models\Base\BaseModel.cs" />
+    <Compile Include="Models\ProvisionOfServices.cs" />
     <Compile Include="Notify\NotifyPropertyChangedObject.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Fotocenter.cs" />
     <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\ProvisionOfServices.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Base\IBaseRepository.cs" />
     <Compile Include="Repositories\Base\BaseRepositoryImpl.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
@@ -83,10 +88,30 @@
     <Compile Include="Repositories\IServiceRepository.cs" />
     <Compile Include="Repositories\IUserrRepository.cs" />
     <Compile Include="Types\MainMenuPages.cs" />
+    <Compile Include="_Domain_Models_AppContextDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Domain_Models_AppContextDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="_Domain_Models_AppContextDataSet.xsc">
+      <DependentUpon>_Domain_Models_AppContextDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_Domain_Models_AppContextDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_Domain_Models_AppContextDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_Domain_Models_AppContextDataSet.xss">
+      <DependentUpon>_Domain_Models_AppContextDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

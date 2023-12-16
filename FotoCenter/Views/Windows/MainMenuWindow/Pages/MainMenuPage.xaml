@@ -92,6 +92,16 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding User.Role.Title}" Value="Гость">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
             <Button Margin="10,5"
                     FontFamily="Arial"
@@ -105,6 +115,16 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding User.Role.Title}" Value="Гость">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
             <Button Margin="10,5"
                     FontFamily="Arial"
@@ -124,7 +144,7 @@
                     FontFamily="Arial"
                     FontSize="24"
                     Content="Заказы"
-                    Command="{Binding GoToOrdersCommand}"
+                    Command="{Binding GoToProvisionOfServicesCommand}"
                     Foreground="#F5F5F5"
                     Background="#698AFF">
                 <Button.Resources>
@@ -132,6 +152,16 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding User.Role.Title}" Value="Гость">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </WrapPanel>
     </Grid>

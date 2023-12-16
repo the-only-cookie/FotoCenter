@@ -18,9 +18,9 @@ namespace FotoCenter.Views.Windows.MainMenuWindow.Pages
     /// <summary>
     /// Логика взаимодействия для OrdersPage.xaml
     /// </summary>
-    public partial class OrdersPage : Page
+    public partial class ProvisionOfServicesPage : Page
     {
-        public OrdersPage()
+        public ProvisionOfServicesPage()
         {
             InitializeComponent();
         }
