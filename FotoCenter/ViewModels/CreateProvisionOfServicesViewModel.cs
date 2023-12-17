@@ -80,6 +80,7 @@ namespace FotoCenter.ViewModels
         }
         public Service Service { get; set; }
 
+
         public ICommand CreateCommand { get; set; }
 
         public bool CanCreateCommandExecute(object parameter)
