@@ -30,32 +30,37 @@
                    TextWrapping="Wrap"
                    Grid.Row="0"
                    Margin="290,10,0,10" 
+                   FontSize="20"
                    Text="Фамилия"
                    HorizontalAlignment="Left" Width="100"/>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"
                    Margin="290,10,0,10" 
+                   FontSize="20"
                    Text="Имя"
                    HorizontalAlignment="Left" Width="100"/>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="2"
                    Margin="290,10,0,10" 
+                   FontSize="20"
                    Text="Отчество"
                    HorizontalAlignment="Left" Width="107"/>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="3"
                    Margin="290,10,0,10" 
+                   FontSize="20"
                    Text="Адрес"
                    HorizontalAlignment="Left" Width="100"/>
 
         <TextBlock Grid.Column="0"
                    Grid.Row="4"
-                   Margin="290,10,0,10" 
+                   Margin="228,10,0,10" 
+                   FontSize="20"
                    Text="Номер телефона"
-                   HorizontalAlignment="Left" Width="100"/>
+                   HorizontalAlignment="Left" Width="162"/>
 
         <TextBox Grid.Column="1"
                  Grid.Row="0"
@@ -94,6 +99,6 @@
                 FontSize="24"
                 Command="{Binding CreateCommand}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                Content="Создать" Margin="290,0,190,0"/>
+                Content="Создать" Margin="290,0,190,10"/>
     </Grid>
 </Window>

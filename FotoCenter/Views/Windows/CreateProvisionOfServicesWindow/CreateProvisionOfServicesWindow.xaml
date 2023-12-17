@@ -22,57 +22,107 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1"
+        <TextBlock
                    TextWrapping="Wrap"
                    Grid.Row="0"
-                   Margin="250,10,0,10" 
+                   Margin="200,10,0,10" 
+            FontSize="20"
                    Text="Клиент"
-                   HorizontalAlignment="Left" Width="100"/>
+                   HorizontalAlignment="Left" Width="160"/>
 
-        <TextBlock Grid.Column="1"
+        <TextBlock
                    Grid.Row="1"
-                   Margin="250,10,0,10" 
+                   Margin="200,10,0,10" 
+            FontSize="20"
                    Text="Сотрудник"
-                   HorizontalAlignment="Left" Width="100"/>
+                   HorizontalAlignment="Left" Width="160"/>
 
-        <TextBlock Grid.Column="1"
+        <TextBlock
                    Grid.Row="2"
-                   Margin="250,10,0,10" 
+                   Margin="200,10,0,42" 
+            FontSize="20"
                    Text="Услуга"
-                   HorizontalAlignment="Left" Width="107"/>
+                   HorizontalAlignment="Left" Width="160"/>
 
-        <TextBox Grid.Column="2"
+        <TextBlock Grid.Column="0"
+                   Grid.Row="3"
+                   Margin="107,10,0,42" 
+                   FontSize="20"
+                   Text="Дата предоставления услуг"
+                   HorizontalAlignment="Left" Width="255"/>
+
+        <TextBox Grid.Column="1"
+                 Grid.Row="3"
+                 Margin="10,10,0,42"
+                 Text="{Binding DateOfProvisionOfServices, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Left" Width="200"/>
+
+
+        <ComboBox x:Name="client" Grid.Column="2"
                  Grid.Row="0"
-                 Margin="10,10,0,42"
-                 Text="{Binding Client.Firstname, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalAlignment="Left" Width="200"/>
+                   SelectedItem="{Binding SelectedClient}"
+                  ItemsSource="{Binding Clients}"
+                 Margin="10,10,0,42"  HorizontalAlignment="Left" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock>
+                            <Run Text="{Binding Firstname}"/>
+                            <Run Text="{Binding Client.LastName}"/>
 
-        <TextBox Grid.Column="2"
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox x:Name="employee" Grid.Column="2"
                  Grid.Row="1"
-                 Margin="10,10,0,42"
-                 Text="{Binding Employee.Firstname, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalAlignment="Left" Width="200"/>
+                    SelectedItem="{Binding SelectedEmployee}"
+                  ItemsSource="{Binding Employees}"
+                 Margin="10,10,0,42"  HorizontalAlignment="Left" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock>
+                            <Run Text="{Binding Firstname}"/>
+                            <Run Text="{Binding Emploee.LastName}"/>
 
-        <TextBox Grid.Column="2"
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox x:Name="service" Grid.Column="2"
                  Grid.Row="2"
-                 Margin="10,10,0,42"
-                 Text="{Binding Service.Title, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalAlignment="Left" Width="200"/>
-        
-        <ComboBox FontSize="20"
-                  SelectedItem="{Binding SelectedCategory}"
-                   ItemsSource="{Binding Categories}"
-                  Margin="5"/>
+                  SelectedItem="{Binding SelectedService}"
+                  ItemsSource="{Binding Services}"
+                 Margin="10,10,0,42"  HorizontalAlignment="Left" Width="200">
+            <ComboBox.ItemTemplate>
+
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock>
+                            <Run Text="{Binding Title}"/>
+                            <Run Text="{Binding Cost}"/>
+
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <Button Grid.ColumnSpan="2"
-                Grid.Row="3"
+                Grid.Row="4"
                 Foreground="#F5F5F5"
                 Background="#698AFF"
                 FontSize="24"
                 Command="{Binding CreateCommand}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                Content="Создать" Margin="250,0,190,10" Grid.Column="1"/>
+                Content="Создать" Margin="200,10,200,10"/>
     </Grid>
 </Window>

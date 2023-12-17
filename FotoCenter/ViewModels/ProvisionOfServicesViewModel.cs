@@ -27,7 +27,7 @@ namespace FotoCenter.ViewModels
             LoadData();
         }
         public ProvisionOfServices SelectedItem { get; set; }
-        public ProvisionOfServices SelectedCategory { get; set; }
+        public ProvisionOfServices SelectedServices { get; set; }
       
 
         public ProvisionOfServices SelectedProvisionOfServices

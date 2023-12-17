@@ -15,7 +15,7 @@ namespace FotoCenter.ViewModels
         private Employee _employee;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IUserrRepository _userRepository;
-        private readonly IFotocenterRepository _fotocenterRepository;
+        
 
         public CreateEmployeeViewModel()
         {

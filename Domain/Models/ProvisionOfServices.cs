@@ -12,7 +12,7 @@ namespace Domain.Models
     public partial class ProvisionOfServices : BaseModel
 {
     public override int Id { get; set; }
-    public string DateOfProvisionOfServices { get; set; }
+    public DateTime DateOfProvisionOfServices { get; set; }
     public int ClientId { get; set; }
     public int EmployeeId { get; set; }
     public int ServiceId { get; set; }

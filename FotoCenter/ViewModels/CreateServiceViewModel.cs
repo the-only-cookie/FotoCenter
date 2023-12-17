@@ -1,10 +1,12 @@
 ﻿using Core.Command;
 using DocumentFormat.OpenXml.Office2010.CustomUI;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Domain.Models;
 using Domain.Notify;
 using Domain.Repositories;
 using FotoCenter.Views.Windows.CreateServiceWindow;
 using Infrastructure.Repositories;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -13,8 +15,10 @@ namespace FotoCenter.ViewModels
     public class CreateServiceViewModel : NotifyPropertyChangedObject
     {
         private Service _service;
+        private ObservableCollection<Category> _categories;
         private readonly IServiceRepository _serviceRepository;
         private readonly IUserrRepository _userRepository;
+        
 
         public CreateServiceViewModel()
         {
@@ -22,10 +26,28 @@ namespace FotoCenter.ViewModels
             User = MainViewModel.CurrentUser;
             _serviceRepository = new ServiceRepositoryImpl(new AppContext());
             _userRepository = new UserrRepositoryImpl(new AppContext());
+            _categoryRepository = new CategoryRepositoryImpl(new AppContext());
             CreateCommand = new RelayCommand(OnCreateCommandExecuted, CanCreateCommandExecute);
+            LoadData();
         }
 
         public User User { get; set; }
+        public Category Category { get; set; }
+        public Category SelectedCategory { get; set; }
+
+        public async void LoadData()
+        {
+            Categories = new ObservableCollection<Category>(await _categoryRepository.GetItemListAsync());
+        }
+
+        private readonly CategoryRepositoryImpl _categoryRepository;
+
+        public ObservableCollection<Category> Categories
+        {
+            get { return _categories; }
+            set { Set(ref _categories, value); }
+        }
+
 
         public Service Service
         {
@@ -42,15 +64,9 @@ namespace FotoCenter.ViewModels
 
         public async void OnCreateCommandExecuted(object parameter)
         {
-            User user = new User();
-            user.Login = "Сотрудник";
-            user.Password = Service.Title;
-            user.RoleId = 2;
-            _userRepository.CreateItem(user);
-            await _userRepository.SaveAsync();
-
-            Service.Id = user.Id;
-            //Service. = user;
+            
+            Service.CategoryId = SelectedCategory.Id;
+            
             _serviceRepository.CreateItem(Service);
             await _serviceRepository.SaveAsync();
 

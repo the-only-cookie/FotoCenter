@@ -21,41 +21,70 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock
                    TextWrapping="Wrap"
                    Grid.Row="0"
-                   Margin="277,46,0,73" 
+                   Grid.Column="0"
+            FontSize="20"
+                   Margin="255,46,0,26" 
                    Text="Название"
                    HorizontalAlignment="Left" Width="113"/>
 
-        <TextBlock
+        <TextBlock Grid.Column="0"
                    Grid.Row="1"
-                    Margin="277,46,0,73" 
+                   FontSize="20"
+                    Margin="255,46,0,26" 
                    Text="Стоимость"
                    HorizontalAlignment="Left" Width="113"/>
 
         <TextBox Grid.Column="1"
                  Grid.Row="0"
-                 Margin="10,37,0,73"
+                 Margin="10,37,0,28"
                  Text="{Binding Service.Title, UpdateSourceTrigger=PropertyChanged}"
                  HorizontalAlignment="Left" Width="200"/>
 
-        <TextBox Grid.Column="2"
+        <TextBox Grid.Column="1"
                  Grid.Row="1"
-                  Margin="10,37,0,73"
+                  Margin="10,37,0,25"
                  Text="{Binding Service.Cost, UpdateSourceTrigger=PropertyChanged}"
                  HorizontalAlignment="Left" Width="200"/>
 
+        <TextBlock Grid.Column="0"
+                   Grid.Row="2"
+                   FontSize="20"
+                    Margin="255,46,0,25" 
+                   Text="Категория"
+                   HorizontalAlignment="Left" Width="113"/>
+
+
+        <ComboBox x:Name="category" Grid.Column="1"
+                 Grid.Row="2"
+                   SelectedItem="{Binding SelectedCategory}"
+                  ItemsSource="{Binding Categories}"
+                  Margin="10,37,0,25"  HorizontalAlignment="Left" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock>
+                            <Run Text="{Binding Title}"/>
+
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
         <Button
-                Grid.Row="1"
+                Grid.Row="3"
                 Foreground="#F5F5F5"
                 Background="#698AFF"
                 FontSize="24"
                 Command="{Binding CreateCommand}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
-                Content="Создать" Margin="277,144,190,36" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                Content="Создать" Margin="255,23,190,24" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
 

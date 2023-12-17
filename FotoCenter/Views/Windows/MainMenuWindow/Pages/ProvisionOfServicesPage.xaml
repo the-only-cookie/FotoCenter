@@ -78,7 +78,7 @@
                     Height="50" 
                     Width="200"  
                     FontSize="24"
-                    Command="{Binding OpenCreateOrdersWindowCommand}"
+                    Command="{Binding OpenCreateProvisionOfServicesWindowCommand}"
                     Foreground="#F5F5F5"
                     Background="#698AFF" Click="Button_Click_1"/>
 
