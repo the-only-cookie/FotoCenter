@@ -40,7 +40,7 @@
                      TextWrapping="Wrap"
                      Text="{Binding SearxhClientLastname, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <DataGrid x:Name="table" CanUserSortColumns="True" AutoGenerateColumns="False" Grid.Row="2" ItemsSource="{Binding ProvisionOfServices}" >
+            <DataGrid x:Name="table" CanUserSortColumns="True" AutoGenerateColumns="False" Grid.Row="2" SelectedItem="{Binding SelectedProvisionOfServices}" ItemsSource="{Binding ProvisionOfServices}" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Клиент" Binding="{Binding Client.Lastname}" Width="*"/>
                     <DataGridTextColumn Header="Сотрудник" Binding="{Binding Employee.Lastname}" Width="*"/>
@@ -90,7 +90,7 @@
                     FontSize="24"
                     Command="{Binding DeleteCommand}"
                     Foreground="#F5F5F5"
-                    Background="#698AFF" Click="Button_Click_2"/>
+                    Background="#698AFF" />
             
             <Button Content="Выгрузить" 
                     DockPanel.Dock="Top"
